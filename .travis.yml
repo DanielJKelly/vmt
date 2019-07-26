@@ -4,7 +4,7 @@ node_js:
 services:
   - mongodb
 before_install:
-  #clone encompass
+  #clone enc
   - "git clone https://github.com/DanielJKelly/encompass.git encompass"
   - "cd encompass"
   - "npm install"
