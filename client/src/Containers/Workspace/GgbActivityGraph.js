@@ -112,6 +112,15 @@ class GgbActivityGraph extends Component {
       startingPointBase64,
     } = tab;
 
+    // this is an attempt to fix the "jumping/scroll" problem
+    // when using tools such as circle with 2 points and line
+    // there is something weird going on with the css for chrome and safari
+    // but not firefox
+    const screenReader1 = document.querySelector('#screenReader1');
+    if (screenReader1) {
+      screenReader1.style.visibility = 'hidden';
+    }
+
     if (currentStateBase64) {
       if (this.isFileLoaded) {
         this.registerListeners();

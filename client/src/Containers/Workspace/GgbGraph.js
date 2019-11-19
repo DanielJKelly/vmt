@@ -540,6 +540,15 @@ class GgbGraph extends Component {
     // Save the coords of the graph element so we know how to restrict reference lines (i.e. prevent from overflowing graph)
     const { tab, setFirstTabLoaded, currentTabId } = this.props;
 
+    // this is an attempt to fix the "jumping/scroll" problem
+    // when using tools such as circle with 2 points and line
+    // there is something weird going on with the css for chrome and safari
+    // but not firefox
+    const screenReader1 = document.querySelector('#screenReader1');
+    if (screenReader1) {
+      screenReader1.style.visibility = 'hidden';
+    }
+
     this.getInnerGraphCoords();
     this.ggbApplet = window[`ggbApplet${tab._id}A`];
     await this.setDefaultGgbMode();
